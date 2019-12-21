@@ -4,22 +4,21 @@ import {intialState, todoReducer} from "../reducers/Reducers";
 import TodoForm from "../components/TodoForm";
 
 const TodoList = () => {
-
-const [newTodo, setNewTodo] = useState("");
 const [state,dispatch] = useReducer(todoReducer,intialState)
 
-console.log(state)
 
-const addTodoList = userInput => {
+
+const addTodoList = data => {
+    
     const newItem= ({
-        item: userInput,
+        item:data,
         completed: false,
         id: Date.now(),
     }) 
-    setNewTodo([...state, newItem])
-     
-
+  
+    dispatch({type:"ADD_TODO", payload:newItem})
 }
+console.log(state)
 
 
  return (
