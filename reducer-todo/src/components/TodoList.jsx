@@ -18,14 +18,17 @@ const addTodoList = data => {
   
     dispatch({type:"ADD_TODO", payload:newItem})
 }
-console.log(state)
 
+const toggleTodo = todoId => {
+dispatch(todoId)
+               
+}
 
  return (
      <div>
       <TodoForm addTodoList={addTodoList} />   
      {state.map(item => {
-         return <Todo todo={item} key={item.id}/>
+         return <Todo todo={item} key={item.id} toggleTodo={toggleTodo}/>
      })}
      </div>
      )    
