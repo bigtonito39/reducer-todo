@@ -20,15 +20,24 @@ const addTodoList = data => {
 }
 
 const toggleTodo = todoId => {
-dispatch(todoId)
+          
+dispatch({type: "TOGGLE_TODO", payload:todoId} )
                
 }
 
+const eraserHandler = event => {
+    event.preventDefault();
+    console.log("hola jose")
+    dispatch({type: "DELETE_TODO"})
+   }
+
+console.log(state)
+
  return (
-     <div>
-      <TodoForm addTodoList={addTodoList} />   
+     <div className= "main-Div"> 
+      <TodoForm addTodoList={addTodoList} eraserHandler={eraserHandler} />   
      {state.map(item => {
-         return <Todo todo={item} key={item.id} toggleTodo={toggleTodo}/>
+         return <Todo todo={item} key={item.id} toggleTodo={toggleTodo} />
      })}
      </div>
      )    

@@ -13,16 +13,18 @@ class TodoForm extends React.Component {
     changeHandler = event => {
         this.setState({userInput: event.target.value})
     }
+
     
     submitHandler = event => {
         event.preventDefault();
        this.props.addTodoList(this.state.userInput)
         this.setState({userInput:""})
+
     }
+  
 
 render(){
-    console.log(this.state.userInput)
-    return (
+      return (
         <div>
             <form onSubmit={this.submitHandler}>
             <input 
@@ -34,6 +36,7 @@ render(){
              <button type="submit">Add To Do</button>
 
             </form>
+            <button onClick={this.props.eraserHandler}> Clear Done Subjects</button>
         </div>
     )
 }
